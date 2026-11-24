@@ -1,52 +1,167 @@
-:root{
-  --red:#DB2121; --yellow:#E3BF52; --blue:#1E58BC; --gray:#D9D9D9;
-  --diff:#CC0D0D; --btn:#C40206; --brown:#693C3C;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
-*{box-sizing:border-box;margin:0;padding:0}
-body{background:#8a7a6c;font-family:'Poppins',sans-serif;display:flex;justify-content:center}
-button{font:inherit;border:0;cursor:pointer}
-.app{width:100%;max-width:402px;min-height:874px;
-  background:#b9a898 url('assets/background.jpg') center/cover;position:relative}
 
-/* header */
-.banner{height:75px;background:#777 url('assets/banner.jpg') center/cover;position:relative;overflow:hidden}
-.banner h1{position:absolute;inset:0;font-weight:400}
-.badge{position:absolute;font-family:'Modak',cursive;font-size:24px;line-height:1;
-  color:var(--red);background:rgba(227,191,82,.95);border-radius:14px;padding:6px 14px 2px;
-  border:3px solid var(--yellow)}
-.welcome{left:8px;top:8px}
-.name{left:128px;top:40px;padding:4px 14px 0}
-.pinoy{color:var(--blue)}
+.app-shell {
+  width: 100%;
+  max-width: 600px;
+  min-height: 100vh;
+  margin: 0 auto;
+  overflow: hidden;
+  background-image: url('https://i.pinimg.com/736x/3e/9a/73/3e9a734bfdc4430fde86b20e8f14c7eb.jpg');
+  background-size: cover;
+  background-position: center;
+}
 
-.content{padding:27px 31px 24px}
-.search{display:flex;align-items:center;gap:6px;height:44px;border-radius:13px;background:var(--gray);padding:0 12px}
-.search input{flex:1;border:0;background:transparent;font:16px 'Poppins',sans-serif;outline:0;min-width:0}
-.search:focus-within{outline:2px solid var(--brown)}
+/*header*/
+.header-banner {
+  position: relative;
+  width: 100%;
+  height: 105px;       /* Sized for 390px phone */
+  margin: 0;           /* Removes the white gap at the top */
+}
 
-.categories{display:flex;justify-content:space-between;margin-top:7px}
-.cat{width:54px;height:52px;border-radius:50%;background:var(--gray);font-size:26px}
-.cat.active{background:var(--yellow);outline:2px solid var(--brown)}
+/* Crops the image cleanly at the top */
+.banner-crop {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
 
-.grid{display:grid;grid-template-columns:repeat(2,151px);justify-content:space-between;
-  column-gap:32px;row-gap:30px;margin-top:34px;min-height:410px;align-content:start}
-.card{width:151px;height:190px;background:var(--gray);border-radius:12px;padding:6px 6px 0;position:relative}
-.photo{height:110px;border-radius:10px;background:#9a8f85 center/cover}
-.card h2{font-family:'Modak',cursive;font-weight:400;font-size:14px;line-height:1;margin-top:8px;color:#000}
-.meta{font-size:10px;font-weight:700;color:var(--diff);line-height:1.5;margin-top:4px}
-.meta span{display:block}
-.go{position:absolute;right:8px;bottom:10px;width:27px;height:27px;border-radius:50%;
-  background:var(--btn);color:#fff;font-size:15px;line-height:1}
-.empty{grid-column:1/-1;text-align:center;font-size:12px;color:#fff;padding:40px 0}
+.banner-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 42%;
+}
 
-.pager{display:flex;align-items:center;justify-content:space-between;height:28px;
-  background:var(--gray);border-radius:16px;padding:0 10px;margin-top:20px}
-.pager button{background:none;font-size:16px;width:24px}
-.pager button:disabled{opacity:.3;cursor:default}
-.dots{display:flex;align-items:center;gap:55px}
-.dot{width:10px;height:10px;border-radius:50%;background:var(--brown);padding:0}
-.dot.active{width:63px;height:23px;border-radius:16px}
+/* "Welcome to" on the upper-left */
+.welcome-text {
+  position: absolute;
+  top: 25px;
+  left: 14px;
+  font-family: 'Modak', cursive;
+  font-size: 40px;     /* Scaled down for mobile */
+  font-weight: 400;
+  line-height: 1;
+  color: #DB2121;
+  -webkit-text-stroke: 8px #e5c64b;
+  paint-order: stroke fill;
+}
 
-.user{display:flex;align-items:center;gap:6px;margin-top:16px}
-.avatar{width:54px;height:54px;border-radius:50%;object-fit:cover;background:#999;margin-left:-2px}
-.username{width:109px;height:14px;background:var(--gray);border-radius:12px;font-size:10px;font-weight:700;
-  line-height:14px;text-align:center}
+/* "SUBO PINOY" overlapping the bottom-right edge */
+.brand-title {
+  position: absolute;
+  bottom: -6px;        /* Slightly overlaps the bottom edge like Figma */
+  left: 28%;
+  font-family: 'Modak', cursive;
+  font-size: 50px;     /* Scaled down for mobile */
+  font-weight: 400;
+  line-height: 1;
+  white-space: nowrap;
+  -webkit-text-stroke: 10px #e5c64b;
+  paint-order: stroke fill;
+}
+
+.subo {
+  color: #DB2121;
+}
+
+.pinoy {
+  color: #1E58BC;
+}
+.search-container {
+  padding: 18px 16px 10px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #E5E5E5;
+  border-radius: 999px;
+  padding: 9px 14px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.14);
+}
+
+.search-icon {
+  width: 16px;
+  height: 16px;
+  color: #4A4A4A;
+  flex-shrink: 0;
+}
+
+.search-bar input {
+  width: 100%;
+  border: none;
+  background: transparent;
+  font-family: 'Poppins', sans-serif;
+  font-size: 13px;
+  font-style: italic;
+  color: #141414;
+  outline: none;
+}
+
+.search-bar input::placeholder {
+  color: #6B6B6B;
+}
+
+.recipe-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  padding: 10px 16px;
+}
+
+.recipe-card {
+  background: #E5E5E5;
+  border-radius: 18px;
+  padding: 8px 8px 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.recipe-card img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 14px;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.recipe-card h3 {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 13px;
+  margin: 0 0 6px;
+  color: #111111;
+}
+
+.card-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.card-info p {
+  margin: 2px 0;
+  font-family: 'Poppins', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  color: #D32F2F;
+}
+
+.arrow-btn {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #D32F2F;
+  color: #FFFFFF;
+  display: grid;
+  place-items: center;
+  text-decoration: none;
+  font-size: 13px;
+}
