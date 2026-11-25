@@ -1,66 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Subo Pinoy</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Modak&family=Poppins:wght@700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Modak&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <main class="app">
-    <header class="banner">
-      <h1 class="banner__title">
-        <span class="badge badge--welcome">Welcome to</span>
-        <span class="badge badge--name">SUBO <span class="badge__accent">PINOY</span></span>
+
+  <div class="app-shell">
+
+    <header class="header-banner">
+      <div class="banner-crop">
+        <img
+          src="https://res.cloudinary.com/jerrick/image/upload/d_642250b563292b35f27461a7.png,f_jpg,fl_progressive,q_auto,w_1024/64805aa4ab39d1001d4bb832.jpg"
+          alt="Filipino dishes"
+          class="banner-img"
+        />
+      </div>
+
+      <p class="welcome-text">Welcome to</p>
+
+      <h1 class="brand-title">
+        <span class="subo">SUBO</span> <span class="pinoy">PINOY</span>
       </h1>
-    </header>
+    </header>\
 
-    <div class="content">
-      <label class="search">
-        <span aria-hidden="true">🔍</span>
-        <input class="search__input" id="search" type="search"
-               placeholder="Search for a Pinoy recipe..." autocomplete="off">
-      </label>
-
-      <nav class="categories" id="categories" aria-label="Categories">
-        <button class="categories__item" type="button" data-category="veggie"  aria-label="Vegetable dishes">🥬</button>
-        <button class="categories__item" type="button" data-category="chicken" aria-label="Chicken dishes">🍗</button>
-        <button class="categories__item" type="button" data-category="pork"    aria-label="Pork dishes">🍖</button>
-        <button class="categories__item" type="button" data-category="soup"    aria-label="Soups">🍲</button>
-        <button class="categories__item" type="button" data-category="beef"    aria-label="Beef dishes">🐂</button>
-      </nav>
-
-      <section class="grid" id="grid" aria-live="polite"></section>
-
-      <nav class="pager" aria-label="Pages">
-        <button class="pager__arrow" id="prev" type="button" aria-label="Previous page">←</button>
-        <div class="pager__dots" id="dots"></div>
-        <button class="pager__arrow" id="next" type="button" aria-label="Next page">→</button>
-      </nav>
-
-      <div class="user">
-        <img class="user__avatar" src="assets/avatar.jpg" alt="Profile photo">
-        <span class="user__name">YoMaMa_15</span>
+    <div class="search-container">
+      <div class="search-bar">
+        <i class="fa-solid fa-magnifying-glass search-icon"></i>
+        <input
+          type="text"
+          id="searchInput"
+          placeholder="Search for a Pinoy recipe..."
+          autocomplete="off"
+        />
       </div>
     </div>
-  </main>
 
-  <template id="card-template">
-    <article class="card">
-      <div class="card__photo"></div>
-      <h2 class="card__title"></h2>
-      <ul class="card__meta">
-        <li class="card__level"></li>
-        <li class="card__time"></li>
-      </ul>
-      <button class="card__go" type="button">→</button>
-    </article>
-  </template>
+    <div id="recipeGrid" class="recipe-grid"></div>
 
-  <script src="recipes.js"></script>
+  </div>
   <script src="script.js"></script>
 </body>
 </html>
