@@ -1,0 +1,1030 @@
+/* Shared reset and consolidated navigation */
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#917d6d;font-family:Roboto,sans-serif}
+.main-navigation{position:sticky;top:0;z-index:1000;display:flex;justify-content:center;gap:10px;flex-wrap:wrap;padding:12px;background:#6d4c36;box-shadow:0 2px 8px #0002}
+.main-navigation a{color:#fff;text-decoration:none;font-weight:700;padding:9px 18px;border-radius:999px}
+.main-navigation a:hover,.main-navigation a.active{background:#e02828}
+.page-view[hidden]{display:none!important}
+
+
+/* ===== HOME PAGE STYLES ===== */
+.page-home *{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.page-home{
+  font-family: "Roboto", sans-serif;
+  color: #1a1a1a;
+  min-height: 100vh;
+  background-color: #917d6d; /* Exact warm taupe from your home page */
+}
+
+/* ================= HEADER BANNER (MATCHED TO HOME) ================= */
+.page-home .header-banner{
+  position: relative;
+  width: 100%;
+  height: 155px;
+  background-color: #dfb431;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.18);
+}
+
+.page-home .banner-crop{
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.page-home .banner-img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 42%;
+}
+
+/* Places "Welcome to" on the left and "SUBO PINOY" on the right */
+.page-home .banner-overlay-text{
+  position: absolute;
+  inset: 0;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 40px 18px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  pointer-events: none;
+}
+
+.page-home .welcome-text{
+  font-family: "Modak", cursive;
+  font-size: 46px;
+  font-weight: 400;
+  line-height: 1;
+  color: #DB2121;
+  -webkit-text-stroke: 12px #e5c64b;
+  paint-order: stroke fill;
+  margin-left: 6%;
+}
+
+.page-home .brand-title{
+  font-family: "Modak", cursive;
+  font-size: 48px;
+  font-weight: 400;
+  line-height: 1;
+  white-space: nowrap;
+  -webkit-text-stroke: 12px #e5c64b;
+  paint-order: stroke fill;
+  margin-right: 6%;
+}
+
+.page-home .subo{
+  color: #DB2121;
+}
+
+.page-home .pinoy{
+  color: #1E58BC;
+}
+
+/* ================= MAIN DESKTOP CONTAINER ================= */
+.page-home .page-wrapper{
+  max-width: 1080px;
+  margin: 28px auto 60px auto;
+  padding: 0 28px;
+}
+
+/* Pill Search Bar (Matched to Home Page) */
+.page-home .search-bar{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  max-width: 680px;
+  margin: 0 auto 30px auto;
+  background-color: #e6e6e6;
+  padding: 12px 22px;
+  border-radius: 999px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+
+.page-home .search-icon{
+  font-size: 16px;
+  color: #666;
+}
+
+.page-home .search-bar input{
+  width: 100%;
+  border: none;
+  background: transparent;
+  font-size: 15px;
+  color: #333;
+  outline: none;
+}
+
+.page-home .search-bar input::placeholder{
+  font-style: italic;
+  color: #777;
+}
+
+/* Off-White Recipe Card (Matched to Home Page Cards) */
+.page-home .recipe-card{
+  background-color: #f3f3f3;
+  border-radius: 20px;
+  padding: 32px 36px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18);
+}
+
+/* Top Two-Column Desktop Split */
+.page-home .card-top-grid{
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  gap: 34px;
+  align-items: start;
+}
+
+/* Left Column: Photo + Floating Red Back Arrow */
+.page-home .photo-column{
+  position: relative;
+}
+
+.page-home .back-btn{
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  width: 40px;
+  height: 40px;
+  background-color: #e02828;
+  color: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: bold;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.25);
+  transition: transform 0.15s ease, background-color 0.15s ease;
+}
+
+.page-home .back-btn:hover{
+  background-color: #c21d1d;
+  transform: scale(1.06);
+}
+
+.page-home .dish-photo{
+  width: 100%;
+  height: 380px;
+  object-fit: cover;
+  border-radius: 16px;
+  display: block;
+}
+
+/* Right Column: Title, Meta, Reviews, Ingredients */
+.page-home .title-row{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 12px;
+}
+
+.page-home .dish-title{
+  font-family: "Roboto", sans-serif;
+  font-size: 30px;
+  font-weight: 900;
+  line-height: 1.1;
+  color: #111111;
+}
+
+.page-home .heart-btn{
+  background: none;
+  border: none;
+  font-size: 26px;
+  cursor: pointer;
+  color: #555;
+  transition: transform 0.15s ease, color 0.15s ease;
+}
+
+.page-home .heart-btn.liked{
+  color: #e02828;
+  transform: scale(1.15);
+}
+
+.page-home .meta-reviews-grid{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid #dedede;
+}
+
+.page-home .meta-list{
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.page-home .meta-item{
+  font-size: 15px;
+  font-weight: 500;
+  color: #e02828;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.page-home .add-recipe-btn{
+  margin-top: 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #ffffff;
+  border: 1.5px solid #d6c8bc;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #222;
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.page-home .add-recipe-btn:hover{
+  background-color: #f9f3ec;
+  border-color: #917d6d;
+}
+
+.page-home .plus-circle{
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #e02828;
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+/* Reviews Box */
+.page-home .reviews-box{
+  text-align: left;
+}
+
+.page-home .reviews-label{
+  font-weight: 700;
+  font-size: 15px;
+  margin-bottom: 4px;
+  color: #222;
+}
+
+.page-home .stars{
+  color: #f4c414;
+  font-size: 24px;
+  letter-spacing: 2px;
+  line-height: 1;
+}
+
+.page-home .rating-row{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 6px;
+  font-size: 13.5px;
+}
+
+.page-home .review-count{
+  color: #666;
+}
+
+.page-home .add-review-link{
+  background: none;
+  border: none;
+  color: #555;
+  text-decoration: underline;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.page-home .add-review-link:hover{
+  color: #000;
+}
+
+/* Ingredients Box */
+.page-home .ingredients-panel{
+  margin-top: 18px;
+  background-color: #e7dfd8;
+  padding: 18px 22px;
+  border-radius: 14px;
+}
+
+.page-home .ingredients-panel h3{
+  font-size: 17px;
+  font-weight: 800;
+  margin-bottom: 10px;
+  color: #1a1a1a;
+}
+
+.page-home .ingredients-list{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px 20px;
+  padding-left: 18px;
+  font-size: 14.5px;
+  font-weight: 500;
+  color: #262626;
+}
+
+/* ================= BOTTOM PROCEDURE SECTION ================= */
+.page-home .recipe-steps-section{
+  margin-top: 28px;
+  padding-top: 22px;
+  border-top: 1px solid #dedede;
+}
+
+.page-home .recipe-steps-section h3{
+  font-size: 19px;
+  font-weight: 800;
+  margin-bottom: 14px;
+  color: #1a1a1a;
+}
+
+.page-home .steps-grid{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.page-home .step-card{
+  background-color: #e7dfd8;
+  border-radius: 14px;
+  padding: 18px 20px;
+  line-height: 1.55;
+  font-size: 14px;
+  color: #222;
+}
+
+.page-home .step-card h4{
+  font-size: 15.5px;
+  font-weight: 800;
+  margin-bottom: 8px;
+  color: #111;
+}
+
+.page-home .step-card p + p{
+  margin-top: 8px;
+}
+
+/* Responsive fallback for smaller screens */
+@media (max-width: 860px) {
+  .page-home .banner-overlay-text{
+    padding: 0 20px 14px 20px;
+  }
+
+  .page-home .welcome-text, .page-home .brand-title{
+    font-size: 32px;
+    margin: 0;
+  }
+
+  .page-home .card-top-grid, .page-home .steps-grid{
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Main navigation */
+.page-home .site-nav{ display:flex; justify-content:center; gap:8px; flex-wrap:wrap; padding:12px 10px; background:#6d4c36; }
+.page-home .site-nav a{ color:#fff; text-decoration:none; font-weight:700; padding:8px 16px; border-radius:999px; }
+.page-home .site-nav a:hover, .page-home .site-nav a[aria-current="page"]{ background:#c40206; }
+
+
+/* ===== SEARCH PAGE STYLES ===== */
+.page-search *{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.page-search{
+  background-color: #222;
+  display: flex;
+  justify-content: center;
+  font-family: "Poppins", sans-serif;
+}
+
+.page-search .app-screen{
+  width: 100%;
+  max-width: 430px;
+  min-height: 100vh;
+  background-image: url("assets/search/background.png");
+  background-repeat: repeat;
+  background-size: 100% auto;
+}
+
+.page-search .hero-banner{
+  width: 100%;
+  height: 74px;
+  background-image: url("assets/search/Rectangle 1.png");
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.page-search .banner-welcome{
+  position: absolute;
+  top: 8px;
+  left: 16px;
+  width: 140px;
+  height: auto;
+}
+
+.page-search .banner-logo{
+  position: absolute;
+  bottom: 0px;
+  right: 175px;
+  width: 140px;
+  height: auto;
+}
+
+.page-search .search-section{
+  padding: 16px;
+}
+
+.page-search .search-bar-wrapper{
+  width: 100%;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  background-color: #d9d9d9;
+  border: 2px solid #f30606;
+  border-radius: 13px;
+  padding: 0 12px;
+  margin-bottom: 14px;
+  gap: 10px;
+}
+
+.page-search .search-bar-wrapper input{
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  color: #000;
+}
+
+.page-search .clear-btn{
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.page-search .filter-pills{
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+  margin-bottom: 12px;
+}
+
+.page-search .pill{
+  height: 36px;
+  background-color: #fff;
+  color: #000;
+  border: none;
+  border-radius: 100px;
+  padding: 0 18px;
+  font-family: "Modak", cursive;
+  font-size: 15px;
+  line-height: 14px;
+  cursor: pointer;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.page-search .pill.active{
+  background-color: #fb0004;
+  color: #000;
+}
+
+.page-search .results-meta{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.page-search .meta-badge{
+  background-color: #fff;
+  border: none;
+  border-radius: 100px;
+  padding: 6px 14px;
+  font-family: "Modak", cursive;
+  font-size: 14px;
+  color: #000;
+}
+
+.page-search .results-list{
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.page-search .recipe-card{
+  display: flex;
+  align-items: center;
+  background-color: #d9d9d9;
+  border-radius: 16px;
+  padding: 10px 14px;
+  gap: 12px;
+  min-height: 96px;
+}
+
+.page-search .recipe-thumb{
+  width: 80px;
+  height: 80px;
+  border-radius: 12px;
+  object-fit: cover;
+  background-color: #bbb;
+  flex-shrink: 0;
+}
+
+.page-search .recipe-info{
+  flex: 1;
+}
+
+.page-search .recipe-title{
+  font-family: "Modak", cursive;
+  font-size: 20px;
+  font-weight: 300;
+  color: #000;
+  line-height: 1.1;
+  margin-bottom: 4px;
+}
+
+.page-search .highlight{
+  color: #ff0000;
+}
+
+.page-search .recipe-tags{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.page-search .tag-category{
+  background-color: #fff;
+  color: #000;
+  border-radius: 100px;
+  padding: 2px 10px;
+  font-family: "Modak", cursive;
+  font-size: 13px;
+}
+
+.page-search .tag-difficulty{
+  color: #ff383c;
+  font-family: "Modak", cursive;
+  font-size: 14px;
+}
+
+.page-search .recipe-time{
+  font-family: "Modak", cursive;
+  font-size: 14px;
+  color: #000;
+}
+
+.page-search .arrow-btn{
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: #c40206;
+  color: #ffffff;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+/* Main navigation */
+.page-search .site-nav{
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding: 12px 10px;
+  background: #6d4c36;
+}
+.page-search .site-nav a{
+  color: #fff;
+  text-decoration: none;
+  font-family: "Poppins", sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 8px 14px;
+  border-radius: 999px;
+}
+.page-search .site-nav a:hover, .page-search .site-nav a[aria-current="page"]{ background: #c40206; }
+
+
+/* ===== PROFILE PAGE STYLES ===== */
+.page-profile *{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.page-profile{
+  background-color: #222;
+  display: flex;
+  justify-content: center;
+  font-family: "Poppins", sans-serif;
+}
+
+.page-profile .app-screen{
+  width: 100%;
+  max-width: 430px;
+  min-height: 100vh;
+  background-color: #e5d3b3;
+  background-image: url("assets/profile/background-sample.jpg");
+  background-repeat: repeat-y;
+  background-size: 110px auto;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.page-profile .profile-container{
+  width: 100%;
+  max-width: 390px;
+  margin: 0 auto;
+  padding: 36px 16px 28px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  flex: 1;
+}
+
+/* Hero Profile Card */
+.page-profile .profile-card-hero{
+  background: #fbf6ec;
+  border: 3px solid #b59373;
+  border-radius: 18px;
+  padding: 16px 14px 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  position: relative;
+  margin-top: 32px;
+}
+
+.page-profile .avatar-ring-wrapper{
+  width: 86px;
+  height: 86px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #e3bf52 0%, #c40206 100%);
+  padding: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: -43px;
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.page-profile .avatar-circle{
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  background-color: #fff;
+}
+
+.page-profile .hero-content{
+  margin-top: 34px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  width: 100%;
+}
+
+.page-profile .username-title{
+  font-family: "Modak", cursive;
+  font-size: 24px;
+  color: #111;
+  letter-spacing: 0.5px;
+}
+
+.page-profile .role-badge{
+  background-color: #e3bf52;
+  color: #222;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 10px;
+  border-radius: 999px;
+  margin-bottom: 6px;
+}
+
+.page-profile .stat-pills-row{
+  display: flex;
+  gap: 8px;
+}
+
+.page-profile .stat-pill{
+  background-color: #fff;
+  border: 1px solid #d4bda2;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 999px;
+  color: #333;
+}
+
+/* Action Rows Stack */
+.page-profile .action-rows-stack{
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.page-profile .action-row-card{
+  width: 100%;
+  height: 54px;
+  background-color: #f3efe6;
+  border: 2px solid #b59373;
+  border-radius: 14px;
+  padding: 0 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: transform 0.1s ease, background-color 0.15s ease;
+}
+
+.page-profile .action-row-card:hover{
+  background-color: #fff;
+  transform: translateY(-1px);
+}
+
+.page-profile .icon-circle{
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: #c40206;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  box-shadow: 0 2px 6px rgba(196, 2, 6, 0.3);
+  flex-shrink: 0;
+}
+
+.page-profile .row-label{
+  flex: 1;
+  text-align: left;
+  padding-left: 12px;
+  font-family: "Modak", cursive;
+  font-size: 18px;
+  color: #111;
+  letter-spacing: 0.5px;
+}
+
+.page-profile .arrow-badge{
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #c40206;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+/* Framed Cocoa Brown Sub-Panel */
+.page-profile .panel-container{
+  background-color: #8c6b53;
+  border: 6px solid #6f513b;
+  border-radius: 18px;
+  padding: 14px;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.22);
+  min-height: 290px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.page-profile .panel-title{
+  font-family: "Modak", cursive;
+  font-size: 21px;
+  font-weight: 400;
+  color: #ffffff;
+  text-align: center;
+  letter-spacing: 0.6px;
+  text-shadow: 0 2px 3px rgba(0, 0, 0, 0.35);
+}
+
+.page-profile .panel-content-body{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-height: 240px;
+  overflow-y: auto;
+}
+
+.page-profile .recipe-card-mini{
+  display: flex;
+  align-items: center;
+  background-color: #d9d9d9;
+  border-radius: 12px;
+  padding: 8px 12px;
+  gap: 10px;
+}
+
+.page-profile .recipe-thumb{
+  width: 52px;
+  height: 52px;
+  border-radius: 10px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.page-profile .recipe-info{
+  flex: 1;
+}
+
+.page-profile .recipe-title{
+  font-family: "Modak", cursive;
+  font-size: 16px;
+  color: #000;
+  line-height: 1.1;
+  margin-bottom: 2px;
+}
+
+.page-profile .recipe-meta-row{
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-family: "Modak", cursive;
+}
+
+.page-profile .tag-cat{
+  background: #fff;
+  padding: 1px 8px;
+  border-radius: 999px;
+  color: #000;
+}
+
+.page-profile .tag-diff{
+  color: #ff383c;
+}
+
+.page-profile .remove-fav-btn{
+  background: #c40206;
+  color: #fff;
+  border: none;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.page-profile .slot-item{
+  background-color: #f3efe6;
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #1f1f1f;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.page-profile .toggle-btn{
+  padding: 4px 12px;
+  border-radius: 999px;
+  border: none;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  background-color: #bbb;
+  color: #222;
+}
+
+.page-profile .toggle-btn.on{
+  background-color: #c40206;
+  color: #fff;
+}
+
+.page-profile .slot-input{
+  width: 100%;
+  background-color: #fff;
+  border: 2px solid #b59373;
+  border-radius: 8px;
+  padding: 9px 12px;
+  font-family: "Poppins", sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: #111;
+  outline: none;
+}
+
+.page-profile .slot-save-btn{
+  background-color: #c40206;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px;
+  font-family: "Modak", cursive;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* Bottom Action Buttons */
+.page-profile .bottom-actions{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+  padding-top: 10px;
+}
+
+.page-profile .action-pill{
+  min-width: 110px;
+  height: 38px;
+  border-radius: 999px;
+  padding: 0 18px;
+  font-family: "Modak", cursive;
+  font-size: 16px;
+  letter-spacing: 0.5px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.18);
+  cursor: pointer;
+  border: 2px solid #5d422f;
+}
+
+.page-profile .logout-btn{
+  background-color: #c40206;
+  color: #ffffff;
+}
+
+.page-profile .back-btn{
+  background-color: #8c6b53;
+  color: #ffffff;
+}
+
+.page-profile .hidden{
+  display: none !important;
+}
+
+/* ===== ABOUT PAGE STYLES ===== */
+.page-about *{ box-sizing: border-box; margin: 0; padding: 0; }
+.page-about{ font-family: "Roboto", sans-serif; color: #1a1a1a; min-height: 100vh; background: #917d6d; }
+.page-about .header-banner{ position: relative; width: 100%; height: 155px; background: #dfb431; box-shadow: 0 3px 10px rgba(0,0,0,.18); }
+.page-about .banner-crop{ width: 100%; height: 100%; overflow: hidden; }
+.page-about .banner-img{ width: 100%; height: 100%; object-fit: cover; object-position: 50% 42%; }
+.page-about .banner-overlay-text{ position: absolute; inset: 0; max-width: 1120px; margin: 0 auto; padding: 0 40px 18px; display: flex; justify-content: space-between; align-items: flex-end; pointer-events: none; }
+.page-about .welcome-text, .page-about .brand-title{ font-family: "Modak", cursive; font-size: clamp(28px, 4vw, 48px); font-weight: 400; line-height: 1; -webkit-text-stroke: 9px #e5c64b; paint-order: stroke fill; }
+.page-about .welcome-text{ color: #db2121; margin-left: 6%; }
+.page-about .brand-title{ white-space: nowrap; margin-right: 6%; }
+.page-about .subo{ color: #db2121; } .page-about .pinoy{ color: #1e58bc; }
+.page-about .site-nav{ display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; padding: 14px 20px; background: #6d4c36; }
+.page-about .site-nav a{ color: #fff; text-decoration: none; font-weight: 700; padding: 8px 18px; border-radius: 999px; }
+.page-about .site-nav a:hover, .page-about .site-nav a[aria-current="page"]{ background: #e02828; }
+.page-about .about-wrapper{ width: min(900px, calc(100% - 36px)); margin: 42px auto 64px; }
+.page-about .about-card{ background: #f3f3f3; border-radius: 22px; padding: clamp(26px, 5vw, 52px); box-shadow: 0 6px 20px rgba(0,0,0,.18); }
+.page-about .eyebrow{ color: #d62828; font-size: 12px; font-weight: 900; letter-spacing: 2px; margin-bottom: 12px; }
+.page-about h2{ font-size: clamp(30px, 5vw, 42px); margin-bottom: 14px; }
+.page-about .intro{ font-size: 19px; line-height: 1.6; color: #51463f; max-width: 720px; }
+.page-about .about-divider{ height: 2px; background: #e5d8cc; margin: 28px 0; }
+.page-about h3{ font-size: 21px; margin: 22px 0 8px; }
+.page-about .about-card p:not(.eyebrow){ line-height: 1.75; }
+.page-about .back-link{ display: inline-flex; gap: 12px; align-items: center; margin-top: 30px; padding: 12px 20px; background: #c40206; color: #fff; text-decoration: none; font-weight: 700; border-radius: 999px; }
+.page-about .back-link:hover{ background: #a90004; }
+@media (max-width: 650px) { .page-about .header-banner{ height: 120px; } .page-about .banner-overlay-text{ padding: 0 16px 14px; } .page-about .welcome-text{ margin-left: 0; } .page-about .brand-title{ margin-right: 0; } .page-about .welcome-text, .page-about .brand-title{ font-size: 27px; -webkit-text-stroke-width: 6px; } }

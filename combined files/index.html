@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Subo Pinoy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Modak&family=Poppins:wght@400;500;600;700&family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head><body>
+<nav class="main-navigation" aria-label="Main navigation">
+<a href="#home" data-page-link="home" class="active">Home</a><a href="#search" data-page-link="search">Search Recipes</a><a href="#profile" data-page-link="profile">Profile</a><a href="#about" data-page-link="about">About</a>
+</nav>
+<main id="app-main">
+<section class="page-view page-home" id="home" data-page="home" >
+<!-- Top Header Banner (Matched to Home Page) -->
+  <header class="header-banner">
+    <div class="banner-crop">
+      <img
+        src="https://panlasangpinoy.com/wp-content/uploads/2022/03/picnic-food-ideas.jpg"
+        alt="Filipino dishes"
+        class="banner-img"
+      />
+    </div>
+
+    <div class="banner-overlay-text">
+      <p class="welcome-text">Welcome to</p>
+      <h1 class="brand-title">
+        <span class="subo">SUBO</span> <span class="pinoy">PINOY</span>
+      </h1>
+    </div>
+  </header>
+
+  
+
+  <!-- Main Content Area -->
+  <main class="page-wrapper">
+    <!-- Pill Search Bar -->
+    <div class="search-bar">
+      <span class="search-icon">&#128269;</span>
+      <input
+        type="text"
+        id="recipeSearch"
+        placeholder="Search for a Pinoy recipe..."
+      />
+    </div>
+
+    <!-- Desktop Recipe Card -->
+    <section class="recipe-card">
+      <!-- Top Row: Back Button + Dish Photo + Dish Info & Reviews -->
+      <div class="card-top-grid">
+        <div class="photo-column">
+          <a href="#search" class="back-btn" title="Back to recipes">&#8592;</a>
+          <img
+            src="https://panlasangpinoy.com/wp-content/uploads/2018/11/Filipino-Chicken-Adobo-Recipe.jpg"
+            alt="Chicken Adobo"
+            class="dish-photo"
+          />
+        </div>
+
+        <div class="info-column">
+          <div class="title-row">
+            <h2 class="dish-title">Chicken Adobo</h2>
+            <button type="button" class="heart-btn" id="favBtn" aria-label="Favorite recipe">&#9825;</button>
+          </div>
+
+          <!-- Meta Badges & Reviews Split -->
+          <div class="meta-reviews-grid">
+            <div class="meta-list">
+              <p class="meta-item"><span class="meta-icon">&#127858;</span> Easy</p>
+              <p class="meta-item"><span class="meta-icon">&#128339;</span> 45 mins</p>
+              <button type="button" class="add-recipe-btn" id="addRecipeBtn">
+                <span class="plus-circle">+</span> Add own recipe
+              </button>
+            </div>
+
+            <div class="reviews-box">
+              <p class="reviews-label">Reviews</p>
+              <div class="stars" aria-label="5 out of 5 stars">
+                <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
+              </div>
+              <div class="rating-row">
+                <span><strong>5.0</strong> <span class="review-count">(201)</span></span>
+                <button type="button" class="add-review-link" id="addReviewBtn">Add own review</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Ingredients Box -->
+          <div class="ingredients-panel">
+            <h3>Ingredients</h3>
+            <ul class="ingredients-list">
+              <li>Pork belly</li>
+              <li>Garlic</li>
+              <li>Dried bay leaves</li>
+              <li>White vinegar</li>
+              <li>Soy sauce</li>
+              <li>Whole peppercorns</li>
+              <li>Water</li>
+              <li>Salt</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Full-Width Procedure Section -->
+      <div class="recipe-steps-section">
+        <h3>Recipe</h3>
+        <div class="steps-grid">
+          <div class="step-card">
+            <h4>1. Marinate the Pork</h4>
+            <p>Combine the pork belly, soy sauce, and crushed garlic in a bowl.</p>
+            <p>Mix well, cover, and marinate for at least 1 hour.</p>
+            <p>If you have time, marinate for 3 hours or overnight in the fridge. The longer the pork sits, the more flavor goes in.</p>
+          </div>
+
+          <div class="step-card">
+            <h4>2. Sear the Marinated Pork</h4>
+            <p>Heat a heavy pot over medium heat. Remove the pork from the marinade and put it in the pot. Set the marinade aside.</p>
+            <p>Cook the pork for a few minutes, turning the pieces so they brown on the outside.</p>
+            <p>Pour in the remaining marinade including the garlic once the pork has color.</p>
+          </div>
+
+          <div class="step-card">
+            <h4>3. Simmer with Aromatics</h4>
+            <p>Add the water, whole peppercorns, and dried bay leaves to the pot. Bring to a boil, then lower the heat to a gentle simmer until tender.</p>
+            <p>Pour in the white vinegar without stirring for 3–5 minutes, then season with salt to taste and simmer until the sauce thickens.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</section>
+<section class="page-view page-search" id="search" data-page="search" hidden>
+<div class="app-screen">
+    <header class="hero-banner">
+      <img src="assets/search/Welcome to.svg" alt="Welcome to" class="banner-welcome">
+      <img src="assets/search/SUBO PINOY.svg" alt="SUBO PINOY" class="banner-logo">
+    </header>
+
+    
+
+    <main class="search-section">
+      <div class="search-bar-wrapper">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="search-input" placeholder="Search dishes..." autocomplete="off">
+        <button type="button" id="clear-btn" class="clear-btn" aria-label="Clear search">×</button>
+      </div>
+
+      <div class="filter-pills" id="filter-pills">
+        <button class="pill active" data-filter="All">All</button>
+        <button class="pill" data-filter="Chicken">Chicken</button>
+        <button class="pill" data-filter="Pork">Pork</button>
+        <button class="pill" data-filter="Seafood">Seafood</button>
+        <button class="pill" data-filter="Easy">Easy</button>
+      </div>
+
+      <div class="results-meta" id="results-meta" style="display: none;">
+        <span class="meta-badge" id="results-count">0 results</span>
+        <button type="button" class="meta-badge" id="sort-btn">Best Match ↓</button>
+      </div>
+
+      <ul class="results-list" id="results-list"></ul>
+    </main>
+  </div>
+</section>
+<section class="page-view page-profile" id="profile" data-page="profile" hidden>
+<div class="app-screen">
+    <main class="profile-container">
+      
+      <!-- HERO PROFILE CARD WITH OVERLAPPING AVATAR -->
+      <section class="profile-card-hero">
+        <div class="avatar-ring-wrapper">
+          <img src="assets/profile/subopfp.jpg" alt="User Avatar" class="avatar-circle" id="profile-avatar">
+        </div>
+        <div class="hero-content">
+          <h1 class="username-title" id="profile-username">YoMaMa_15</h1>
+          <div class="role-badge">Filipino Food Explorer</div>
+          <div class="stat-pills-row">
+            <span class="stat-pill">Favorites ❤</span>
+            <span class="stat-pill">Tried ✔</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- MAIN MENU: Search-Style Elevated Action Rows -->
+      <section class="action-rows-stack" id="view-menu">
+        <button type="button" class="action-row-card" data-target="view-settings">
+          <div class="icon-circle">⚙</div>
+          <span class="row-label">ACCOUNT SETTINGS</span>
+          <span class="arrow-badge">→</span>
+        </button>
+
+        <button type="button" class="action-row-card" data-target="view-favorites">
+          <div class="icon-circle">❤</div>
+          <span class="row-label">FAVORITES</span>
+          <span class="arrow-badge">→</span>
+        </button>
+
+        <button type="button" class="action-row-card" data-target="view-edit">
+          <div class="icon-circle">✎</div>
+          <span class="row-label">EDIT ACCOUNT</span>
+          <span class="arrow-badge">→</span>
+        </button>
+
+        <button type="button" class="action-row-card" data-target="view-activity">
+          <div class="icon-circle">⏱</div>
+          <span class="row-label">ACTIVITY</span>
+          <span class="arrow-badge">→</span>
+        </button>
+      </section>
+
+      <!-- SUB-PANEL CONTAINER: Cocoa Brown Framed View -->
+      <section class="panel-container hidden" id="sub-panel">
+        <h2 class="panel-title" id="panel-heading">FAVORITES</h2>
+        <div class="panel-content-body" id="panel-body"></div>
+      </section>
+
+      <!-- BOTTOM NAVIGATION PILLS -->
+      <footer class="bottom-actions">
+        <button type="button" class="action-pill logout-btn" id="btn-logout">LOG-OUT</button>
+        <button type="button" class="action-pill back-btn" id="btn-back">BACK</button>
+      </footer>
+
+    </main>
+  </div>
+</section>
+<section class="page-view page-about" id="about" data-page="about" hidden>
+<header class="header-banner">
+    <div class="banner-crop">
+      <img src="https://panlasangpinoy.com/wp-content/uploads/2022/03/picnic-food-ideas.jpg" alt="A selection of Filipino dishes" class="banner-img">
+    </div>
+    <div class="banner-overlay-text">
+      <p class="welcome-text">Welcome to</p>
+      <h1 class="brand-title"><span class="subo">SUBO</span> <span class="pinoy">PINOY</span></h1>
+    </div>
+  </header>
+
+  
+
+  <main class="about-wrapper">
+    <section class="about-card">
+      <p class="eyebrow">STORIES OF UNIQUE BITES AND ORIGINS</p>
+      <h2>About Subo Pinoy</h2>
+      <p class="intro">A place to explore Filipino food, discover familiar dishes, and find inspiration for what to cook next.</p>
+      <div class="about-divider"></div>
+      <h3>Our Purpose</h3>
+      <p>Subo Pinoy brings Filipino recipes together in one easy-to-explore space. Browse dishes, search by name, and explore recipes across different food categories.</p>
+      <h3>Discover Filipino Cuisine</h3>
+      <p>From everyday favorites to dishes worth discovering, Subo Pinoy celebrates the variety of food found in Filipino kitchens. We hope this collection encourages you to explore, prepare, and share the dishes you enjoy.</p>
+      <a class="back-link" href="#search" data-page-link="search">Explore recipes <span aria-hidden="true">→</span></a>
+    </section>
+  </main>
+</section>
+</main>
+<script src="script.js"></script>
+</body></html>
