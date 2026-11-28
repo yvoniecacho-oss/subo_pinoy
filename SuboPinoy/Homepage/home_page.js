@@ -1,62 +1,252 @@
-const PER_PAGE = 4;
+// 1. All 12 Recipes (4 per page = 3 pages)
 const recipes = [
-  {name:'Chicken Adobo', level:'Easy', time:'45 mins', cat:'chicken', img:'chicken-adobo'},
-  {name:'Pork Sinigang', level:'Medium', time:'1 hr', cat:'soup', img:'pork-sinigang'},
-  {name:'Beef Caldereta', level:'Medium', time:'2 hrs', cat:'beef', img:'beef-caldereta'},
-  {name:'Lumpia', level:'Easy', time:'30 mins', cat:'pork', img:'lumpia'},
-  {name:'Kare-Kare', level:'Hard', time:'3 hrs', cat:'beef', img:'kare-kare'},
-  {name:'Sisig', level:'Medium', time:'1 hr', cat:'pork', img:'sisig'},
-  {name:'Tinola', level:'Easy', time:'40 mins', cat:'soup', img:'tinola'},
-  {name:'Pinakbet', level:'Easy', time:'35 mins', cat:'veggie', img:'pinakbet'},
+  // Page 1 (your Pinterest images)
+  {
+    id: 'chicken-adobo',
+    name: 'Chicken Adobo',
+    difficulty: 'Easy',
+    time: '45 mins',
+    category: 'chicken',
+    image: 'https://i.pinimg.com/736x/a5/95/dc/a595dcfe363437bc112efc69ec0c20a6.jpg'
+  },
+  {
+    id: 'pork-sinigang',
+    name: 'Pork Sinigang',
+    difficulty: 'Medium',
+    time: '1 hr',
+    category: 'soup',
+    image: 'https://i.pinimg.com/736x/c3/2f/08/c32f0879160b9fdf0ab68262f9df56f3.jpg'
+  },
+  {
+    id: 'beef-caldereta',
+    name: 'Beef Caldereta',
+    difficulty: 'Medium',
+    time: '2 hrs',
+    category: 'beef',
+    image: 'https://i.pinimg.com/736x/52/b6/90/52b6902e073598e2816e91f87b75afe0.jpg'
+  },
+  {
+    id: 'lumpia',
+    name: 'Lumpia',
+    difficulty: 'Easy',
+    time: '30 mins',
+    category: 'appetizer',
+    image: 'https://i.pinimg.com/736x/c4/25/37/c42537aa3cd6e6650eae15216ac0f8b1.jpg'
+  },
+
+  // Page 2
+  {
+    id: 'pork-menudo',
+    name: 'Pork Menudo',
+    difficulty: 'Medium',
+    time: '50 mins',
+    category: 'pork',
+    image: 'https://images.unsplash.com/photo-1534939561126-855b8675edd7?w=400'
+  },
+  {
+    id: 'pork-kare-kare',
+    name: 'Pork Kare-Kare',
+    difficulty: 'Hard',
+    time: '1 hr',
+    category: 'pork',
+    image: 'https://images.unsplash.com/photo-1547592166-23ac45744acd?w=400'
+  },
+  {
+    id: 'beef-mechado',
+    name: 'Beef Mechado',
+    difficulty: 'Medium',
+    time: '1 hr 45 mins',
+    category: 'beef',
+    image: 'https://images.unsplash.com/photo-1534939561126-855b8675edd7?w=400'
+  },
+  {
+    id: 'tokwat-baboy',
+    name: 'Tokwa’t Baboy',
+    difficulty: 'Easy',
+    time: '35 mins',
+    category: 'appetizer',
+    image: 'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=400'
+  },
+
+  // Page 3
+  {
+    id: 'lechon-kawali',
+    name: 'Lechon Kawali',
+    difficulty: 'Medium',
+    time: '1 hr 15 mins',
+    category: 'pork',
+    image: 'https://images.unsplash.com/photo-1598515214211-89d3c73ae83b?w=400'
+  },
+  {
+    id: 'pancit-canton',
+    name: 'Pancit Canton',
+    difficulty: 'Easy',
+    time: '30 mins',
+    category: 'appetizer',
+    image: 'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=400'
+  },
+  {
+    id: 'chicken-tinola',
+    name: 'Chicken Tinola',
+    difficulty: 'Easy',
+    time: '45 mins',
+    category: 'soup',
+    image: 'https://images.unsplash.com/photo-1547592166-23ac45744acd?w=400'
+  },
+  {
+    id: 'halo-halo',
+    name: 'Halo-Halo',
+    difficulty: 'Easy',
+    time: '20 mins',
+    category: 'appetizer',
+    image: 'https://images.unsplash.com/photo-1598515214211-89d3c73ae83b?w=400'
+  }
 ];
 
-let page = 0, query = '', cat = null;
-const $ = id => document.getElementById(id);
+// 2. Memory Variables
+const ITEMS_PER_PAGE = 4;
+let currentPage = 1;
+let activeCategory = null;
+let searchQuery = '';
 
-function filtered(){
-  return recipes.filter(r =>
-    r.name.toLowerCase().includes(query) && (!cat || r.cat === cat));
+// 3. Grab HTML Elements
+const grid = document.getElementById('recipeGrid');
+const searchInput = document.getElementById('searchInput');
+const categoryBtns = document.querySelectorAll('.category-btn');
+const paginationBar = document.getElementById('paginationBar');
+const paginationDots = document.getElementById('paginationDots');
+const prevBtn = document.getElementById('prevPageBtn');
+const nextBtn = document.getElementById('nextPageBtn');
+
+// 4. Filter by Search + Category
+function getFilteredRecipes() {
+  return recipes.filter((r) => {
+    const matchName = r.name.toLowerCase().includes(searchQuery.toLowerCase());
+    const matchCategory = !activeCategory || r.category === activeCategory;
+    return matchName && matchCategory;
+  });
 }
 
-function render(){
-  const list = filtered();
-  const pages = Math.max(1, Math.ceil(list.length / PER_PAGE));
-  page = Math.min(page, pages - 1);
+// 5. Render Current Page of Cards + Pagination Dots
+function showRecipes() {
+  const filtered = getFilteredRecipes();
+  const totalPages = Math.max(1, Math.ceil(filtered.length / ITEMS_PER_PAGE));
 
-  $('grid').innerHTML = list.length
-    ? list.slice(page*PER_PAGE, page*PER_PAGE + PER_PAGE).map(r => `
-      <article class="card">
-        <div class="photo" style="background-image:url('assets/${r.img}.jpg')"></div>
-        <h2>${r.name}</h2>
-        <div class="meta"><span>♨ ${r.level}</span><span>🕒 ${r.time}</span></div>
-        <button class="go" aria-label="Open ${r.name}" data-name="${r.name}">→</button>
-      </article>`).join('')
-    : '<p class="empty">No recipes found.</p>';
+  if (currentPage > totalPages) currentPage = totalPages;
+  grid.innerHTML = '';
 
-  $('dots').innerHTML = Array.from({length: pages}, (_, i) =>
-    `<button class="dot${i === page ? ' active' : ''}" data-page="${i}" aria-label="Page ${i+1}"></button>`).join('');
-  $('prev').disabled = page === 0;
-  $('next').disabled = page >= pages - 1;
+  // Empty State ("No recipes found")
+  if (filtered.length === 0) {
+    grid.innerHTML = `<p class="empty-msg">No recipes found. Try another search!</p>`;
+    if (paginationBar) paginationBar.style.display = 'none';
+    return;
+  }
+
+  if (paginationBar) paginationBar.style.display = 'flex';
+
+  // Slice 4 cards for the current page
+  const start = (currentPage - 1) * ITEMS_PER_PAGE;
+  const pageItems = filtered.slice(start, start + ITEMS_PER_PAGE);
+
+  pageItems.forEach((recipe) => {
+    grid.innerHTML += `
+      <div class="recipe-card">
+        <img src="${recipe.image}" alt="${recipe.name}" />
+        <h3>${recipe.name}</h3>
+        <div class="card-bottom">
+          <div class="card-info">
+            <p><i class="fa-solid fa-fire-burner"></i> ${recipe.difficulty}</p>
+            <p><i class="fa-regular fa-clock"></i> ${recipe.time}</p>
+          </div>
+          <a href="../Infopage/info_page.html?id=${recipe.id}" class="arrow-btn">
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+    `;
+  });
+
+  renderPagination(totalPages);
 }
 
-$('search').addEventListener('input', e => { query = e.target.value.trim().toLowerCase(); page = 0; render(); });
+// 6. Build Dots & Hide/Show Arrows
+function renderPagination(totalPages) {
+  if (!paginationDots) return;
 
-$('categories').addEventListener('click', e => {
-  const b = e.target.closest('.cat'); if (!b) return;
-  cat = cat === b.dataset.cat ? null : b.dataset.cat;
-  document.querySelectorAll('.cat').forEach(c => c.classList.toggle('active', c.dataset.cat === cat));
-  page = 0; render();
+  prevBtn.style.visibility = currentPage === 1 ? 'hidden' : 'visible';
+  nextBtn.style.visibility = currentPage === totalPages ? 'hidden' : 'visible';
+
+  paginationDots.innerHTML = '';
+  for (let i = 1; i <= totalPages; i++) {
+    const dot = document.createElement('button');
+    dot.className = i === currentPage ? 'page-dot active' : 'page-dot';
+    dot.addEventListener('click', () => {
+      currentPage = i;
+      showRecipes();
+    });
+    paginationDots.appendChild(dot);
+  }
+}
+
+// 7. Search Input Listener
+searchInput.addEventListener('input', () => {
+  searchQuery = searchInput.value.trim();
+  currentPage = 1;
+  showRecipes();
 });
 
-$('prev').onclick = () => { page--; render(); };
-$('next').onclick = () => { page++; render(); };
-$('dots').addEventListener('click', e => {
-  const d = e.target.closest('.dot'); if (d){ page = +d.dataset.page; render(); }
+// 8. Category Button Toggle Listeners
+categoryBtns.forEach((btn) => {
+  btn.addEventListener('click', () => {
+    const clicked = btn.dataset.category;
+    if (activeCategory === clicked) {
+      activeCategory = null;
+      btn.classList.remove('active');
+    } else {
+      activeCategory = clicked;
+      categoryBtns.forEach((b) => b.classList.remove('active'));
+      btn.classList.add('active');
+    }
+    currentPage = 1;
+    showRecipes();
+  });
 });
 
-// Placeholder: replace with navigation to the recipe detail page
-$('grid').addEventListener('click', e => {
-  const g = e.target.closest('.go'); if (g) console.log('Open recipe:', g.dataset.name);
-});
+// 9. Arrow Click Listeners
+if (prevBtn && nextBtn) {
+  prevBtn.addEventListener('click', () => {
+    if (currentPage > 1) {
+      currentPage--;
+      showRecipes();
+    }
+  });
 
-render();
+  nextBtn.addEventListener('click', () => {
+    const totalPages = Math.ceil(getFilteredRecipes().length / ITEMS_PER_PAGE);
+    if (currentPage < totalPages) {
+      currentPage++;
+      showRecipes();
+    }
+  });
+}
+
+// 10. Mobile Swipe Support
+let touchStartX = 0;
+grid.addEventListener('touchstart', (e) => {
+  touchStartX = e.changedTouches[0].screenX;
+}, { passive: true });
+
+grid.addEventListener('touchend', (e) => {
+  const diff = e.changedTouches[0].screenX - touchStartX;
+  const totalPages = Math.ceil(getFilteredRecipes().length / ITEMS_PER_PAGE);
+  if (diff < -45 && currentPage < totalPages) {
+    currentPage++;
+    showRecipes();
+  } else if (diff > 45 && currentPage > 1) {
+    currentPage--;
+    showRecipes();
+  }
+}, { passive: true });
+
+// Initial Render
+showRecipes();

@@ -3,133 +3,60 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Subo Pinoy - Chicken Adobo</title>
+  <title>Subo Pinoy</title>
 
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Modak&family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,400&display=swap" rel="stylesheet">
+  <!-- Google Fonts (Modak + Archivo Black + Poppins) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Modak&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="styles.css" />
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <!-- Make sure this matches your CSS filename! -->
+  <link rel="stylesheet" href="home_page.css" />
 </head>
 <body>
 
-  <!-- Top Header Banner (Matched to Home Page) -->
-  <header class="header-banner">
-    <div class="banner-crop">
-      <img
-        src="https://panlasangpinoy.com/wp-content/uploads/2022/03/picnic-food-ideas.jpg"
-        alt="Filipino dishes"
-        class="banner-img"
-      />
-    </div>
+  <div class="app-shell">
 
-    <div class="banner-overlay-text">
+    <header class="header-banner">
+      <div class="banner-crop">
+        <img
+          src="https://res.cloudinary.com/jerrick/image/upload/d_642250b563292b35f27461a7.png,f_jpg,fl_progressive,q_auto,w_1024/64805aa4ab39d1001d4bb832.jpg"
+          alt="Filipino dishes"
+          class="banner-img"
+        />
+      </div>
+
       <p class="welcome-text">Welcome to</p>
+
       <h1 class="brand-title">
         <span class="subo">SUBO</span> <span class="pinoy">PINOY</span>
       </h1>
-    </div>
-  </header>
+    </header>
 
-  <!-- Main Content Area -->
-  <main class="page-wrapper">
-    <!-- Pill Search Bar -->
-    <div class="search-bar">
-      <span class="search-icon">&#128269;</span>
-      <input
-        type="text"
-        id="recipeSearch"
-        placeholder="Search for a Pinoy recipe..."
-      />
-    </div>
-
-    <!-- Desktop Recipe Card -->
-    <section class="recipe-card">
-      <!-- Top Row: Back Button + Dish Photo + Dish Info & Reviews -->
-      <div class="card-top-grid">
-        <div class="photo-column">
-          <a href="../Homepage/home.html" class="back-btn" title="Back to recipes">&#8592;</a>
-          <img
-            src="https://panlasangpinoy.com/wp-content/uploads/2018/11/Filipino-Chicken-Adobo-Recipe.jpg"
-            alt="Chicken Adobo"
-            class="dish-photo"
-          />
-        </div>
-
-        <div class="info-column">
-          <div class="title-row">
-            <h2 class="dish-title">Chicken Adobo</h2>
-            <button type="button" class="heart-btn" id="favBtn" aria-label="Favorite recipe">&#9825;</button>
-          </div>
-
-          <!-- Meta Badges & Reviews Split -->
-          <div class="meta-reviews-grid">
-            <div class="meta-list">
-              <p class="meta-item"><span class="meta-icon">&#127858;</span> Easy</p>
-              <p class="meta-item"><span class="meta-icon">&#128339;</span> 45 mins</p>
-              <button type="button" class="add-recipe-btn" id="addRecipeBtn">
-                <span class="plus-circle">+</span> Add own recipe
-              </button>
-            </div>
-
-            <div class="reviews-box">
-              <p class="reviews-label">Reviews</p>
-              <div class="stars" aria-label="5 out of 5 stars">
-                <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
-              </div>
-              <div class="rating-row">
-                <span><strong>5.0</strong> <span class="review-count">(201)</span></span>
-                <button type="button" class="add-review-link" id="addReviewBtn">Add own review</button>
-              </div>
-            </div>
-          </div>
-
-          <!-- Ingredients Box -->
-          <div class="ingredients-panel">
-            <h3>Ingredients</h3>
-            <ul class="ingredients-list">
-              <li>Pork belly</li>
-              <li>Garlic</li>
-              <li>Dried bay leaves</li>
-              <li>White vinegar</li>
-              <li>Soy sauce</li>
-              <li>Whole peppercorns</li>
-              <li>Water</li>
-              <li>Salt</li>
-            </ul>
-          </div>
-        </div>
+    <!-- Search Bar (closed properly with </div>!) -->
+    <div class="search-container">
+      <div class="search-bar">
+        <i class="fa-solid fa-magnifying-glass search-icon"></i>
+        <input
+          type="text"
+          id="searchInput"
+          placeholder="Search for a Pinoy recipe..."
+          autocomplete="off"
+        />
       </div>
+    </div>
 
-      <!-- Bottom Full-Width Procedure Section -->
-      <div class="recipe-steps-section">
-        <h3>Recipe</h3>
-        <div class="steps-grid">
-          <div class="step-card">
-            <h4>1. Marinate the Pork</h4>
-            <p>Combine the pork belly, soy sauce, and crushed garlic in a bowl.</p>
-            <p>Mix well, cover, and marinate for at least 1 hour.</p>
-            <p>If you have time, marinate for 3 hours or overnight in the fridge. The longer the pork sits, the more flavor goes in.</p>
-          </div>
 
-          <div class="step-card">
-            <h4>2. Sear the Marinated Pork</h4>
-            <p>Heat a heavy pot over medium heat. Remove the pork from the marinade and put it in the pot. Set the marinade aside.</p>
-            <p>Cook the pork for a few minutes, turning the pieces so they brown on the outside.</p>
-            <p>Pour in the remaining marinade including the garlic once the pork has color.</p>
-          </div>
 
-          <div class="step-card">
-            <h4>3. Simmer with Aromatics</h4>
-            <p>Add the water, whole peppercorns, and dried bay leaves to the pot. Bring to a boil, then lower the heat to a gentle simmer until tender.</p>
-            <p>Pour in the white vinegar without stirring for 3–5 minutes, then season with salt to taste and simmer until the sauce thickens.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
+    <!-- Recipe Card Grid (now outside .search-container!) -->
+    <div id="recipeGrid" class="recipe-grid"></div>
 
-  <script src="script.js"></script>
+  </div>
+
+  <!-- Make sure your JS file is named script.js in the same folder -->
+  <script src="home_page.js"></script>
 </body>
 </html>

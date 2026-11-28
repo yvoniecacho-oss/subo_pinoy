@@ -5,19 +5,31 @@
 }
 
 body {
-  font-family: 'Roboto', sans-serif;
-  color: #1a1a1a;
+  background-color: #2B2118;
   min-height: 100vh;
-  background-color: #917d6d; /* Exact warm taupe from your home page */
 }
 
-/* ================= HEADER BANNER (MATCHED TO HOME) ================= */
+/* Fixed Desktop Frame (1200px wide) */
+.app-shell {
+  width: 1200px;
+  min-height: 100vh;
+  margin: 0 auto;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.35);
+  background-size: 450px auto;
+  background-repeat: repeat;
+}
+
+/* =========================================
+   Desktop Header Banner
+   ========================================= */
 .header-banner {
   position: relative;
   width: 100%;
-  height: 155px;
-  background-color: #dfb431;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.18);
+  height: 210px;
+  margin: 0;
 }
 
 .banner-crop {
@@ -33,39 +45,32 @@ body {
   object-position: 50% 42%;
 }
 
-/* Places "Welcome to" on the left and "SUBO PINOY" on the right */
-.banner-overlay-text {
-  position: absolute;
-  inset: 0;
-  max-width: 1120px;
-  margin: 0 auto;
-  padding: 0 40px 18px 40px;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  pointer-events: none;
-}
-
+/* "Welcome to" on the upper-left */
 .welcome-text {
-  font-family: 'Modak', cursive;
-  font-size: 46px;
-  font-weight: 400;
-  line-height: 1;
-  color: #DB2121;
-  -webkit-text-stroke: 12px #e5c64b;
-  paint-order: stroke fill;
-  margin-left: 6%;
-}
-
-.brand-title {
+  position: absolute;
+  top: 26px;
+  left: 36px;
   font-family: 'Modak', cursive;
   font-size: 48px;
   font-weight: 400;
   line-height: 1;
-  white-space: nowrap;
-  -webkit-text-stroke: 12px #e5c64b;
+  color: #DB2121;
+  -webkit-text-stroke: 14px #e5c64b;
   paint-order: stroke fill;
-  margin-right: 6%;
+}
+
+/* "SUBO PINOY" overlapping the bottom-right edge */
+.brand-title {
+  position: absolute;
+  bottom: -14px;
+  right: 40px;
+  font-family: 'Modak', cursive;
+  font-size: 72px;
+  font-weight: 400;
+  line-height: 1;
+  white-space: nowrap;
+  -webkit-text-stroke: 18px #e5c64b;
+  paint-order: stroke fill;
 }
 
 .subo {
@@ -76,310 +81,148 @@ body {
   color: #1E58BC;
 }
 
-/* ================= MAIN DESKTOP CONTAINER ================= */
-.page-wrapper {
-  max-width: 1080px;
-  margin: 28px auto 60px auto;
-  padding: 0 28px;
+/* =========================================
+   Desktop Search Bar
+   ========================================= */
+.search-container {
+  padding: 28px 24px 16px;
+  width: 640px;
+  margin: 0 auto;
 }
 
-/* Pill Search Bar (Matched to Home Page) */
 .search-bar {
   display: flex;
   align-items: center;
-  gap: 12px;
-  max-width: 680px;
-  margin: 0 auto 30px auto;
-  background-color: #e6e6e6;
-  padding: 12px 22px;
+  gap: 10px;
+  background-color: #E5E5E5;
   border-radius: 999px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  padding: 12px 18px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.16);
 }
 
 .search-icon {
-  font-size: 16px;
-  color: #666;
+  width: 18px;
+  height: 18px;
+  color: #4A4A4A;
+  flex-shrink: 0;
 }
 
 .search-bar input {
   width: 100%;
   border: none;
   background: transparent;
-  font-size: 15px;
-  color: #333;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  font-style: italic;
+  color: #141414;
   outline: none;
 }
 
 .search-bar input::placeholder {
-  font-style: italic;
-  color: #777;
+  color: #6B6B6B;
 }
 
-/* Off-White Recipe Card (Matched to Home Page Cards) */
-.recipe-card {
-  background-color: #f3f3f3;
-  border-radius: 20px;
-  padding: 32px 36px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18);
-}
-
-/* Top Two-Column Desktop Split */
-.card-top-grid {
+/* =========================================
+   4-Column Desktop Recipe Grid
+   ========================================= */
+.recipe-grid {
   display: grid;
-  grid-template-columns: 1.05fr 1fr;
-  gap: 34px;
-  align-items: start;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+  padding: 14px 36px 28px;
 }
 
-/* Left Column: Photo + Floating Red Back Arrow */
-.photo-column {
-  position: relative;
+.recipe-card {
+  background: #E5E5E5;
+  border-radius: 20px;
+  padding: 10px 10px 14px;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.16);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.back-btn {
-  position: absolute;
-  top: 14px;
-  left: 14px;
-  width: 40px;
-  height: 40px;
-  background-color: #e02828;
-  color: #ffffff;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-  font-size: 20px;
-  font-weight: bold;
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.25);
-  transition: transform 0.15s ease, background-color 0.15s ease;
+.recipe-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.24);
 }
 
-.back-btn:hover {
-  background-color: #c21d1d;
-  transform: scale(1.06);
-}
-
-.dish-photo {
+.recipe-card img {
   width: 100%;
-  height: 380px;
+  aspect-ratio: 1 / 1;
   object-fit: cover;
-  border-radius: 16px;
+  border-radius: 15px;
   display: block;
+  margin-bottom: 10px;
 }
 
-/* Right Column: Title, Meta, Reviews, Ingredients */
-.title-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 14px;
-  margin-bottom: 12px;
-}
-
-.dish-title {
-  font-family: 'Roboto', sans-serif;
-  font-size: 30px;
-  font-weight: 900;
-  line-height: 1.1;
+.recipe-card h3 {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 16px;
+  margin: 0 0 8px;
   color: #111111;
 }
 
-.heart-btn {
-  background: none;
-  border: none;
-  font-size: 26px;
-  cursor: pointer;
-  color: #555;
-  transition: transform 0.15s ease, color 0.15s ease;
-}
-
-.heart-btn.liked {
-  color: #e02828;
-  transform: scale(1.15);
-}
-
-.meta-reviews-grid {
+.card-bottom {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
-  gap: 20px;
-  padding-bottom: 18px;
-  border-bottom: 1px solid #dedede;
+  align-items: flex-end;
 }
 
-.meta-list {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
+.card-info p {
+  margin: 3px 0;
+  font-family: 'Poppins', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: #D32F2F;
 }
 
-.meta-item {
-  font-size: 15px;
-  font-weight: 500;
-  color: #e02828;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.add-recipe-btn {
-  margin-top: 6px;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background-color: #ffffff;
-  border: 1.5px solid #d6c8bc;
-  padding: 6px 14px;
-  border-radius: 999px;
-  font-size: 13.5px;
-  font-weight: 700;
-  color: #222;
-  cursor: pointer;
-  transition: background-color 0.15s ease, border-color 0.15s ease;
-}
-
-.add-recipe-btn:hover {
-  background-color: #f9f3ec;
-  border-color: #917d6d;
-}
-
-.plus-circle {
-  width: 20px;
-  height: 20px;
+.arrow-btn {
+  width: 34px;
+  height: 34px;
   border-radius: 50%;
-  background-color: #e02828;
-  color: #fff;
+  background: #D32F2F;
+  color: #FFFFFF;
+  display: grid;
+  place-items: center;
+  text-decoration: none;
+  font-size: 15px;
+  transition: transform 0.15s ease, background-color 0.15s ease;
+}
+
+.arrow-btn:hover {
+  background-color: #B71C1C;
+  transform: scale(1.08);
+}
+
+/* =========================================
+   Desktop User Profile (Bottom-Left)
+   ========================================= */
+.profile-footer {
+  padding: 16px 36px 24px;
+  margin-top: auto;
+}
+
+.profile-badge {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  font-weight: bold;
-  font-size: 15px;
+  gap: 10px;
 }
 
-/* Reviews Box */
-.reviews-box {
-  text-align: left;
+.avatar-img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #FFFFFF;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.16);
 }
 
-.reviews-label {
-  font-weight: 700;
-  font-size: 15px;
-  margin-bottom: 4px;
-  color: #222;
-}
-
-.stars {
-  color: #f4c414;
-  font-size: 24px;
-  letter-spacing: 2px;
-  line-height: 1;
-}
-
-.rating-row {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-top: 6px;
-  font-size: 13.5px;
-}
-
-.review-count {
-  color: #666;
-}
-
-.add-review-link {
-  background: none;
-  border: none;
-  color: #555;
-  text-decoration: underline;
+.username-pill {
+  background-color: #E5E5E5;
+  color: #111111;
+  font-family: 'Poppins', sans-serif;
   font-size: 13px;
-  cursor: pointer;
-}
-
-.add-review-link:hover {
-  color: #000;
-}
-
-/* Ingredients Box */
-.ingredients-panel {
-  margin-top: 18px;
-  background-color: #e7dfd8;
-  padding: 18px 22px;
-  border-radius: 14px;
-}
-
-.ingredients-panel h3 {
-  font-size: 17px;
-  font-weight: 800;
-  margin-bottom: 10px;
-  color: #1a1a1a;
-}
-
-.ingredients-list {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 6px 20px;
-  padding-left: 18px;
-  font-size: 14.5px;
-  font-weight: 500;
-  color: #262626;
-}
-
-/* ================= BOTTOM PROCEDURE SECTION ================= */
-.recipe-steps-section {
-  margin-top: 28px;
-  padding-top: 22px;
-  border-top: 1px solid #dedede;
-}
-
-.recipe-steps-section h3 {
-  font-size: 19px;
-  font-weight: 800;
-  margin-bottom: 14px;
-  color: #1a1a1a;
-}
-
-.steps-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 18px;
-}
-
-.step-card {
-  background-color: #e7dfd8;
-  border-radius: 14px;
-  padding: 18px 20px;
-  line-height: 1.55;
-  font-size: 14px;
-  color: #222;
-}
-
-.step-card h4 {
-  font-size: 15.5px;
-  font-weight: 800;
-  margin-bottom: 8px;
-  color: #111;
-}
-
-.step-card p + p {
-  margin-top: 8px;
-}
-
-/* Responsive fallback for smaller screens */
-@media (max-width: 860px) {
-  .banner-overlay-text {
-    padding: 0 20px 14px 20px;
-  }
-
-  .welcome-text,
-  .brand-title {
-    font-size: 32px;
-    margin: 0;
-  }
-
-  .card-top-grid,
-  .steps-grid {
-    grid-template-columns: 1fr;
-  }
+  font-weight: 700;
+  padding: 6px 18px;
+  border-radius: 999px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.14);
 }
